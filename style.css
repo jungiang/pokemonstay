@@ -1,0 +1,104 @@
+body {
+    color: lightblue;
+    font-size: 0px;
+    margin: 0px;
+}
+
+.top-header {
+    height: 20vh;
+    background-color: rgba(0, 0, 0, 0.800);
+}
+
+.logo,
+.game-menu,
+.header {
+    font-size: 1rem;
+    display: inline-block;
+    position: relative;
+}
+
+.game-menu,
+.header {
+    width: 100%;
+    position: relative;
+    text-align: center;
+}
+
+.logo {
+    height: 15vh;
+    width: 15vh;
+    position: absolute;
+    border: 1px solid aqua;
+    top: 2%;
+    left: 2%;
+}
+
+.game-menu {
+    font-size: 5vh;
+}
+
+.header {
+    font-size: 10vh;
+}
+
+.hero-body {
+    height: 80vh;
+    background-color: rgb(206, 205, 205);
+}
+
+.stats-container {
+    height: 80%;
+    width: 15%;
+    background-color: rgba(0, 0, 0, 0.800);
+    position: relative;
+    display: inline-block;
+    top: 10%;
+    left: 5%;
+    vertical-align: top;
+}
+
+.games-played,
+.attempts,
+.accuracy,
+.reset {
+    font-size: 1rem;
+    margin: 5%;
+}
+
+.info {
+    font-size: 3rem;
+    position: relative;
+    top: 10%;
+    text-align: center;
+}
+
+.reset {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
+.game-area {
+    height: 90%;
+    width: 60%;
+    position: relative;
+    display: inline-block;
+    top: 5%;
+    left: 10%;
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    height: 30%;
+    width: 14%;
+    background-color: rgb(0, 195, 255);
+    margin: 1%;
+}
+
+.back {
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    display: none;
+}
