@@ -97,7 +97,10 @@ body {
 }
 
 img {
+    height: 300px;
+    width: 300px;
     max-width: 100%;
+    object-fit: contain;
 }
 
 .front {
