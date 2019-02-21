@@ -1,5 +1,4 @@
 body {
-    color: lightblue;
     font-size: 0px;
     margin: 0px;
 }
@@ -7,6 +6,7 @@ body {
 .top-header {
     height: 20vh;
     background-color: rgba(0, 0, 0, 0.800);
+    color: lightblue;
 }
 
 .logo,
@@ -31,6 +31,8 @@ body {
     border: 1px solid aqua;
     top: 2%;
     left: 2%;
+    background-image: url(pictures/logo.gif);
+    background-size: contain;
 }
 
 .game-menu {
@@ -50,6 +52,7 @@ body {
     height: 80%;
     width: 15%;
     background-color: rgba(0, 0, 0, 0.800);
+    color: lightblue;
     position: relative;
     display: inline-block;
     top: 10%;
@@ -97,9 +100,8 @@ body {
 }
 
 img {
-    height: 150px;
-    width: 150px;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
     object-fit: contain;
 }
 
@@ -110,6 +112,8 @@ img {
 .back {
     height: 100%;
     width: 100%;
+    background-repeat: no-repeat;
+    background-size: contain;
     position: absolute;
-    background-color: red;
+    background-image: url('pictures/cover.jpg');
 }

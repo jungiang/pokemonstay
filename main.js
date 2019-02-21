@@ -9,7 +9,7 @@ var match_counter = 0;
 var matches = 0;
 var attempts = 0;
 var accuracy = 0;
-var games_played = 0;// = 2 when resetting after winning
+var games_played = 0;
 var pokeArray = [
     'pictures/abra.png', 'pictures/aerodactyl.png', 'pictures/alakazam.png', 'pictures/arbok.png', 'pictures/arcanine.png', 'pictures/articuno.png', 
     'pictures/beedrill.png', 'pictures/bellsprout.png', 'pictures/blastoise.png', 'pictures/bulbasaur.png', 'pictures/butterfree.png', 
@@ -73,7 +73,7 @@ function card_clicked(){
         $('.card').off('click', card_clicked);
         if(first_card_clicked === second_card_clicked){
             matches++;
-            //match_counter++; --- Turn this on when win resets
+            match_counter++;
             first_card_clicked = null;
             second_card_clicked = null;
             playerAccuracy();
@@ -82,6 +82,7 @@ function card_clicked(){
                 $('.card').on('click', card_clicked);
             }, 2000);
             if(match_counter === total_possible_matches){
+                gameReset();
                 return console.log('You won!');
             }else{
                 return;
@@ -96,7 +97,7 @@ function card_clicked(){
                 display_stats();
                 $('.card').on('click', card_clicked);
                 return;
-            }, 2000);//need to stop click inputs while timeout
+            }, 2000);
         }
     }
 }
@@ -123,4 +124,9 @@ function reset_stats(){
     matches = 0;
     attempts = 0;
     display_stats();
+}
+
+function storePokemon(){
+    var pokemonCaptured = $(this).find('.front img').attr('src');
+
 }
