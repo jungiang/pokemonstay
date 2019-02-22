@@ -61,7 +61,7 @@ body {
 }
 
 .games-played,
-.attempts,
+.caught,
 .accuracy,
 .reset {
     font-size: 1rem;
@@ -69,16 +69,25 @@ body {
 }
 
 .info {
-    font-size: 3rem;
-    position: relative;
-    top: 10%;
+    position: absolute;
+    bottom: 30%;
+}
+
+.info > p {
+    font-size: 2.5rem;
     text-align: center;
+    margin: 10px;
 }
 
 .reset {
     position: absolute;
     bottom: 5%;
     left: 10%;
+    background-image: url(pictures/sleep.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 6vh;
+    width: 10vh;
 }
 
 .game-area {
@@ -116,4 +125,49 @@ img {
     background-size: contain;
     position: absolute;
     background-image: url('pictures/cover.jpg');
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(pictures/pokeball.jpg);
+    background-size: contain;
+}
+
+.modal-content {
+    /* background-image: url(pictures/pokedex.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
+    width: 95%;
+    height: 95%;
+    margin: 5vh 5vw;
+    overflow: scroll;
+}
+
+.close {
+    color: rgb(255, 255, 255);
+    font-size: 5vh;
+    font-weight: bold;
+    position: absolute;
+    right: 5%;
+}
+
+.close:hover,
+.close:focus,
+.info:hover,
+.info:focus {
+    color: rgb(56, 56, 180);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.collection {
+    object-fit: contain;
+    float: left;
 }

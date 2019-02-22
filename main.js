@@ -1,5 +1,8 @@
 $(document).ready(initializeApp);
-
+//make it so you can't click a flipped box and same box
+/*
+local.Storage.objectName
+*/
 var first_card_clicked = null;
 var first_card_flipped = null;
 var second_card_clicked = null;
@@ -9,7 +12,10 @@ var match_counter = 0;
 var matches = 0;
 var attempts = 0;
 var accuracy = 0;
-var games_played = 0;
+var caught = null;
+var modal = $('.modal');
+var games_played = null;
+var collection = null;
 var pokeArray = [
     'pictures/abra.png', 'pictures/aerodactyl.png', 'pictures/alakazam.png', 'pictures/arbok.png', 'pictures/arcanine.png', 'pictures/articuno.png', 
     'pictures/beedrill.png', 'pictures/bellsprout.png', 'pictures/blastoise.png', 'pictures/bulbasaur.png', 'pictures/butterfree.png', 
@@ -37,15 +43,42 @@ var pokeArray = [
 
 function initializeApp(){
     randomCard();
+    searchLocalStorage();
     $('.card').on('click', card_clicked);
-    $('.reset').on('click', function(){
-        gameReset();
-        randomCard()
-    });
+    $('.reset').on('click', gameReset);
+    $('.info').on('click', showCollection);
+    $('.modal-content span').on('click', modalClose);
+}
+
+function searchLocalStorage(){
+    if(!localStorage.games_played){
+        localStorage.caught = 1;
+        caught = JSON.parse(localStorage.caught);
+        localStorage.games_played = 0;
+        games_played = JSON.parse(localStorage.games_played);
+        localStorage.collection = {};
+        collection = localStorage.collection;
+    }else{
+        localStorage.caught = localStorage.getItem('caught');
+        caught = localStorage.caught;
+
+        localStorage.games_played = localStorage.getItem('games_played');
+        games_played = localStorage.games_played;
+
+        localStorage.collection = localStorage.getItem('collection');
+        collection = localStorage.collection;
+    }
+}
+
+function setCollection(){
+    var addContainer = $('<div>').addClass('collection');
+    var addImage = $('<img>').attr('src', collection);//add alt later
+    var newPokemon = addContainer.append(addImage);
+
+    $('.modal-content').append(newPokemon);
 }
 
 function randomCard(){
-    //debugger;
     var valueArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18];
     while(valueArray.length > 0){
         var randomIndex = Math.floor(Math.random()*pokeArray.length);
@@ -62,7 +95,6 @@ function randomCard(){
 
 function card_clicked(){
     $(this).find('.back').css('display', 'none');
-    //debugger;
     if(first_card_clicked === null){
         first_card_clicked = $(this).find('.front img').attr('src');
         first_card_flipped = $(this).find('.back');
@@ -72,17 +104,25 @@ function card_clicked(){
         attempts++;
         $('.card').off('click', card_clicked);
         if(first_card_clicked === second_card_clicked){
+            storePokemon();
+            collection = {1: second_card_clicked};
+            localStorage.setItem('collection', collection);
             matches++;
             match_counter++;
+            caught++;
+            localStorage.setItem('caught', JSON.stringify(caught));
             first_card_clicked = null;
             second_card_clicked = null;
             playerAccuracy();
             display_stats();
             setTimeout(function(){
                 $('.card').on('click', card_clicked);
-            }, 2000);
+            }, 1000);
             if(match_counter === total_possible_matches){
-                gameReset();
+                localStorage.setItem('games_played', JSON.stringify(games_played));
+                setTimeout(function(){
+                    gameReset();
+                }, 1000);
                 return console.log('You won!');
             }else{
                 return;
@@ -97,15 +137,17 @@ function card_clicked(){
                 display_stats();
                 $('.card').on('click', card_clicked);
                 return;
-            }, 2000);
+            }, 1000);
         }
     }
 }
 
 function gameReset(){
     games_played++;
+    localStorage.setItem('games_played', JSON.stringify(games_played));
     reset_stats();
     display_stats();
+    randomCard();
     $('.back').css('display', '');
 }
 
@@ -115,7 +157,7 @@ function playerAccuracy(){
 
 function display_stats(){
     $('.games-played > .value').text(games_played);
-    $('.attempts > .value').text(attempts);
+    $('.caught > .value').text(caught);
     $('.accuracy > .value').text(Math.round(accuracy*100) + '%'); 
 }
 
@@ -127,6 +169,17 @@ function reset_stats(){
 }
 
 function storePokemon(){
-    var pokemonCaptured = $(this).find('.front img').attr('src');
+    var addContainer = $('<div>').addClass('collection');
+    var addImage = $('<img>').attr('src', second_card_clicked);//add alt later
+    var newPokemon = addContainer.append(addImage);
 
+    $('.modal-content').append(newPokemon);
+}
+
+function showCollection(){
+    $('.modal').css('display', 'block');
+}
+
+function modalClose(){
+    $('.modal').css('display', 'none');
 }
