@@ -1,5 +1,9 @@
 $(document).ready(initializeApp);
 //DEBUGGING: make it so you can't click a flipped box and same box
+//fix presentation on modal and app page
+//add beginning explanation that can be reopened (modal?)
+//add localStorage clear button
+//card animations and sound for hit and miss
 
 var first_card_clicked = null;
 var first_card_flipped = null;
