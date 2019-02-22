@@ -1,8 +1,6 @@
 $(document).ready(initializeApp);
-//make it so you can't click a flipped box and same box
-/*
-local.Storage.objectName
-*/
+//DEBUGGING: make it so you can't click a flipped box and same box
+
 var first_card_clicked = null;
 var first_card_flipped = null;
 var second_card_clicked = null;
@@ -16,6 +14,7 @@ var caught = null;
 var modal = $('.modal');
 var games_played = null;
 var collection = null;
+var collectionArray = [];
 var pokeArray = [
     'pictures/abra.png', 'pictures/aerodactyl.png', 'pictures/alakazam.png', 'pictures/arbok.png', 'pictures/arcanine.png', 'pictures/articuno.png', 
     'pictures/beedrill.png', 'pictures/bellsprout.png', 'pictures/blastoise.png', 'pictures/bulbasaur.png', 'pictures/butterfree.png', 
@@ -44,6 +43,7 @@ var pokeArray = [
 function initializeApp(){
     randomCard();
     searchLocalStorage();
+    setCollection();
     $('.card').on('click', card_clicked);
     $('.reset').on('click', gameReset);
     $('.info').on('click', showCollection);
@@ -59,23 +59,27 @@ function searchLocalStorage(){
         localStorage.collection = {};
         collection = localStorage.collection;
     }else{
-        localStorage.caught = localStorage.getItem('caught');
-        caught = localStorage.caught;
+        caught = localStorage.getItem('caught');
 
-        localStorage.games_played = localStorage.getItem('games_played');
-        games_played = localStorage.games_played;
+        games_played = localStorage.getItem('games_played');
 
-        localStorage.collection = localStorage.getItem('collection');
-        collection = localStorage.collection;
+        var collectionString = localStorage.getItem('collection'); //string of object
+        var collectionParse = JSON.parse(collectionString); //return to object
+        collection = Object.values(collectionParse); //assign array of pokemon to collection
+        collectionArray = collection;
     }
 }
 
 function setCollection(){
-    var addContainer = $('<div>').addClass('collection');
-    var addImage = $('<img>').attr('src', collection);//add alt later
-    var newPokemon = addContainer.append(addImage);
-
-    $('.modal-content').append(newPokemon);
+    debugger;
+    if(collectionArray[0]){
+        for(i = 0; i < collection.length; i++){
+            var addContainer = $('<div>').addClass('collection');
+            var addImage = $('<img>').attr('src', collection[i]);//add alt later
+            var newPokemon = addContainer.append(addImage);
+            $('.modal-content').append(newPokemon);    
+        }    
+    }
 }
 
 function randomCard(){
@@ -105,8 +109,9 @@ function card_clicked(){
         $('.card').off('click', card_clicked);
         if(first_card_clicked === second_card_clicked){
             storePokemon();
-            collection = {1: second_card_clicked};
-            localStorage.setItem('collection', collection);
+            collectionArray.push(second_card_clicked); //push new pokemon into an array
+            collection = Object.assign({}, collectionArray); //convert array into object
+            localStorage.setItem('collection', JSON.stringify(collection)); //set string of object {1:pika} as localStorage.collection
             matches++;
             match_counter++;
             caught++;
@@ -123,7 +128,7 @@ function card_clicked(){
                 setTimeout(function(){
                     gameReset();
                 }, 1000);
-                return console.log('You won!');
+                return console.log('One step closer to being a pokemon master!');
             }else{
                 return;
             }
