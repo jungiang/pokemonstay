@@ -90,6 +90,11 @@ body {
     width: 10vh;
 }
 
+.reset:hover,
+.reset:focus {
+    cursor: pointer;
+}
+
 .game-area {
     height: 90%;
     width: 60%;
@@ -131,19 +136,13 @@ img {
     display: none;
     position: fixed;
     z-index: 5;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
-    background-image: url(pictures/pokeball.jpg);
-    background-size: contain;
+    left: 0;
+    top: 0;
 }
 
 .modal-content {
-    /* background-image: url(pictures/pokedex.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center; */
     width: 95%;
     height: 95%;
     margin: 5vh 5vw;
@@ -158,16 +157,66 @@ img {
     right: 5%;
 }
 
+.reborn {
+    color: rgb(107, 4, 4);
+    font-size: 3vh;
+    font-weight: bold;
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+}
+
 .close:hover,
 .close:focus,
 .info:hover,
-.info:focus {
+.info:focus,
+.reborn:hover,
+.reborn.focus {
     color: rgb(56, 56, 180);
     text-decoration: none;
     cursor: pointer;
 }
 
+.collection>img:hover,
+.collection>img:focus {
+    cursor: grab;
+}
+
 .collection {
     object-fit: contain;
-    float: left;
+    display: inline-block;
 }
+
+#pokedex {
+    background-image: url(pictures/pokeball.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.tired {
+    margin: 0;
+    padding: 5%;
+    overflow: hidden;
+    background-color: rgba(0,0,0,1);
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+}
+
+.flute {
+    animation: wakeUp 3s;
+    animation-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+.sleeping {
+    height: 100%;
+}
+
+@keyframes wakeUp {
+    from {
+        opacity: 1;
+    }to{
+        opacity: 0;
+    }
+}
+

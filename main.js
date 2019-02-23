@@ -1,5 +1,4 @@
 $(document).ready(initializeApp);
-//DEBUGGING: make it so you can't click a flipped box and same box
 //fix presentation on modal and app page
 //add beginning explanation that can be reopened (modal?)
 //add localStorage clear button
@@ -49,9 +48,18 @@ function initializeApp(){
     searchLocalStorage();
     setCollection();
     $('.card').on('click', card_clicked);
-    $('.reset').on('click', gameReset);
+    $('.reset').on('click', totalReset);
     $('.info').on('click', showCollection);
-    $('.modal-content span').on('click', modalClose);
+    $('.modal > .close').on('click', modalClose);
+    $('#sortable').sortable();
+}
+
+function totalReset(){
+    gameReset();
+    goToBed();
+    setTimeout(
+        modalClose, 3000
+        );
 }
 
 function searchLocalStorage(){
@@ -75,13 +83,12 @@ function searchLocalStorage(){
 }
 
 function setCollection(){
-    debugger;
     if(collectionArray[0]){
         for(i = 0; i < collection.length; i++){
             var addContainer = $('<div>').addClass('collection');
             var addImage = $('<img>').attr('src', collection[i]);//add alt later
             var newPokemon = addContainer.append(addImage);
-            $('.modal-content').append(newPokemon);    
+            $('.stash').append(newPokemon);    
         }    
     }
 }
@@ -106,11 +113,14 @@ function card_clicked(){
     if(first_card_clicked === null){
         first_card_clicked = $(this).find('.front img').attr('src');
         first_card_flipped = $(this).find('.back');
+        if(first_card_flipped.css('display') === 'none'){
+            $(this).off('click', card_clicked);//turn off click handler on first card WORKS
+        }
     }else{
         second_card_clicked = $(this).find('.front img').attr('src');
         var second_card_flipped = $(this).find('.back');
         attempts++;
-        $('.card').off('click', card_clicked);
+        $('.card').off('click', card_clicked);// turn off all click handlers
         if(first_card_clicked === second_card_clicked){
             storePokemon();
             collectionArray.push(second_card_clicked); //push new pokemon into an array
@@ -124,14 +134,13 @@ function card_clicked(){
             second_card_clicked = null;
             playerAccuracy();
             display_stats();
-            setTimeout(function(){
-                $('.card').on('click', card_clicked);
-            }, 1000);
+            setTimeout(addHandlersAgain(), 500);
             if(match_counter === total_possible_matches){
                 localStorage.setItem('games_played', JSON.stringify(games_played));
                 setTimeout(function(){
-                    gameReset();
-                }, 1000);
+                    totalReset();
+                    addHandlersAgain();
+                }, 500);
                 return console.log('One step closer to being a pokemon master!');
             }else{
                 return;
@@ -144,14 +153,26 @@ function card_clicked(){
                 second_card_clicked = null;
                 playerAccuracy();
                 display_stats();
-                $('.card').on('click', card_clicked);
+                addHandlersAgain();
                 return;
-            }, 1000);
+            }, 500);
         }
     }
 }
 
+function addHandlersAgain(){
+    for(cardPosition = 1; cardPosition <= 18; cardPosition++){
+        var parentCard = $('img[data-value="' + cardPosition + '"]').parent();
+        var siblingCard = parentCard.next();
+        var grandparentCard = parentCard.parent();
+        if(siblingCard.css('display') === 'block'){
+            $(grandparentCard).on('click', card_clicked);//turn off click handler on first card WORKS
+        }            
+    }
+}
+
 function gameReset(){
+    match_counter = 0;
     games_played++;
     localStorage.setItem('games_played', JSON.stringify(games_played));
     reset_stats();
@@ -186,9 +207,19 @@ function storePokemon(){
 }
 
 function showCollection(){
-    $('.modal').css('display', 'block');
+    $('#pokedex').css('display', 'block');
 }
 
 function modalClose(){
     $('.modal').css('display', 'none');
 }
+
+function goToBed(){
+    var modalContent = $('#sleep > div');
+    modalContent.addClass('flute');
+    $('#sleep').css('display', 'block');
+    setTimeout(function(){
+        modalContent.removeClass('flute');
+    }, 3000)
+}
+

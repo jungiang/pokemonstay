@@ -6,13 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Memory Match</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="top-header">
         <div class="logo"></div>
-        <!-- <div class="game-menu">Game Menu</div> -->
+        <!-- <div class="game-menu">Game Menu</div> BRING THIS BACK WHEN START ANIMATION IS READY-->
         <div class="header">Pokemon<sub>STAY</sub></div>
     </div>
     <div class="hero-body">
@@ -183,12 +184,21 @@
         </div>
     </div>
     <div id="pokedex" class="modal">
-        <div class="modal-content">
-            <span class="close">Close</span>
+        <span class="close">Close</span>
+        <span class="reborn">Reset Game</span>
+        <div id="sortable" class="modal-content stash">
             <div class="collection">
                 <img src="pictures/pikachu.png" alt="">
             </div>
         </div>
     </div>
+    <div id="sleep" class="modal">
+        <div class="modal-content tired">
+            <p>On to the next day!</p>
+            <div class="sleeping">
+                <img src="pictures/reset2.gif" alt="">
+            </div>
+        </div>
+    </div>    
 </body>
 </html>
