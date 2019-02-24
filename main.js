@@ -1,7 +1,5 @@
 $(document).ready(initializeApp);
-//fix presentation on modal and app page
-//add beginning explanation that can be reopened (modal?)
-//add localStorage clear button
+//add beginning explanation -> game info that can be reopened (modal?)
 //card animations and sound for hit and miss
 
 var first_card_clicked = null;
@@ -19,28 +17,28 @@ var games_played = null;
 var collection = null;
 var collectionArray = [];
 var pokeArray = [
-    'pictures/abra.png', 'pictures/aerodactyl.png', 'pictures/alakazam.png', 'pictures/arbok.png', 'pictures/arcanine.png', 'pictures/articuno.png', 
-    'pictures/beedrill.png', 'pictures/bellsprout.png', 'pictures/blastoise.png', 'pictures/bulbasaur.png', 'pictures/butterfree.png', 
-    'pictures/caterpie.png', 'pictures/chansey.png', 'pictures/charizard.png', 'pictures/charmander.png', 'pictures/charmeleon.png', 'pictures/clefable.png', 'pictures/clefairy.png', 'pictures/cloyster.png', 'pictures/cubone.png', 
-    'pictures/dewgong.png', 'pictures/diglett.png', 'pictures/ditto.png', 'pictures/dodrio.png', 'pictures/doduo.png', 'pictures/dragonair.png', 'pictures/dragonite.png', 'pictures/dratini.png', 'pictures/drowzee.png', 'pictures/dugtrio.png', 
-    'pictures/eevee.png', 'pictures/ekans.png', 'pictures/electabuzz.png', 'pictures/electrode.png', 'pictures/exeggcute.png', 'pictures/exeggutor.png', 
-    'pictures/farfetchd.png', 'pictures/fearow.png', 'pictures/flareon.png', 
-    'pictures/gastly.png', 'pictures/gengar.png', 'pictures/geodude.png', 'pictures/gloom.png', 'pictures/golbat.png', 'pictures/goldeen.png', 'pictures/golduck.png', 'pictures/golem.png', 'pictures/graveler.png', 'pictures/grimer.png', 'pictures/growlithe.png', 'pictures/gyarados.png', 
-    'pictures/haunter.png', 'pictures/hitmonchan.png', 'pictures/hitmonlee.png', 'pictures/horsea.png', 'pictures/hypno.png', 
-    'pictures/ivysaur.png', 
-    'pictures/jigglypuff.png', 'pictures/jolteon.png', 'pictures/jynx.png', 
-    'pictures/kabuto.png', 'pictures/kabutops.png', 'pictures/kadabra.png', 'pictures/kakuna.png', 'pictures/kangaskhan.png', 'pictures/kingler.png', 'pictures/koffing.png', 'pictures/krabby.png', 
-    'pictures/lapras.png', 'pictures/lickitung.png', 
-    'pictures/machamp.png', 'pictures/machoke.png', 'pictures/machop.png', 'pictures/magikarp.png', 'pictures/magmar.png', 'pictures/magnemite.png', 'pictures/magneton.png', 'pictures/mankey.png', 'pictures/marowak.png', 'pictures/meowth.png', 'pictures/metapod.png', 'pictures/mew.png', 'pictures/mewtwo.png', 'pictures/moltres.png', 'pictures/mrmime.png', 'pictures/muk.png', 
-    'pictures/nidoking.png', 'pictures/nidoqueen.png', 'pictures/nidoran-f.png', 'pictures/nidoran-m.png', 'pictures/nidorina.png', 'pictures/nidorino.png', 'pictures/ninetales.png', 
-    'pictures/oddish.png', 'pictures/omanyte.png', 'pictures/omastar.png', 'pictures/onix.png', 
-    'pictures/paras.png', 'pictures/parasect.png', 'pictures/persian.png', 'pictures/pidgeot.png', 'pictures/pidgeotto.png', 'pictures/pidgey.png', 'pictures/pikachu.png', 'pictures/pinsir.png', 'pictures/poliwag.png', 'pictures/poliwhirl.png', 'pictures/poliwrath.png', 'pictures/ponyta.png', 'pictures/porygon.png', 'pictures/primeape.png', 'pictures/psyduck.png', 
-    'pictures/raichu.png', 'pictures/rapidash.png', 'pictures/raticate.png', 'pictures/rattata.png', 'pictures/rhydon.png', 'pictures/rhyhorn.png', 
-    'pictures/sandshrew.png', 'pictures/sandslash.png', 'pictures/scyther.png', 'pictures/seadra.png', 'pictures/seaking.png', 'pictures/seel.png', 'pictures/shellder.png', 'pictures/slowbro.png', 'pictures/slowpoke.png', 'pictures/snorlax.png', 'pictures/spearow.png', 'pictures/squirtle.png', 'pictures/starmie.png', 'pictures/staryu.png', 
-    'pictures/tangela.png', 'pictures/tauros.png', 'pictures/tentacool.png', 'pictures/tentacruel.png', 
-    'pictures/vaporeon.png', 'pictures/venomoth.png', 'pictures/venonat.png', 'pictures/venusaur.png', 'pictures/victreebel.png', 'pictures/vileplume.png', 'pictures/voltorb.png', 'pictures/vulpix.png', 
-    'pictures/wartortle.png', 'pictures/weedle.png', 'pictures/weepinbell.png', 'pictures/weezing.png', 'pictures/wigglytuff.png', 
-    'pictures/zapdos.png', 'pictures/zubat.png'
+    'pokemon/abra.png', 'pokemon/aerodactyl.png', 'pokemon/alakazam.png', 'pokemon/arbok.png', 'pokemon/arcanine.png', 'pokemon/articuno.png', 
+    'pokemon/beedrill.png', 'pokemon/bellsprout.png', 'pokemon/blastoise.png', 'pokemon/bulbasaur.png', 'pokemon/butterfree.png', 
+    'pokemon/caterpie.png', 'pokemon/chansey.png', 'pokemon/charizard.png', 'pokemon/charmander.png', 'pokemon/charmeleon.png', 'pokemon/clefable.png', 'pokemon/clefairy.png', 'pokemon/cloyster.png', 'pokemon/cubone.png', 
+    'pokemon/dewgong.png', 'pokemon/diglett.png', 'pokemon/ditto.png', 'pokemon/dodrio.png', 'pokemon/doduo.png', 'pokemon/dragonair.png', 'pokemon/dragonite.png', 'pokemon/dratini.png', 'pokemon/drowzee.png', 'pokemon/dugtrio.png', 
+    'pokemon/eevee.png', 'pokemon/ekans.png', 'pokemon/electabuzz.png', 'pokemon/electrode.png', 'pokemon/exeggcute.png', 'pokemon/exeggutor.png', 
+    'pokemon/farfetchd.png', 'pokemon/fearow.png', 'pokemon/flareon.png', 
+    'pokemon/gastly.png', 'pokemon/gengar.png', 'pokemon/geodude.png', 'pokemon/gloom.png', 'pokemon/golbat.png', 'pokemon/goldeen.png', 'pokemon/golduck.png', 'pokemon/golem.png', 'pokemon/graveler.png', 'pokemon/grimer.png', 'pokemon/growlithe.png', 'pokemon/gyarados.png', 
+    'pokemon/haunter.png', 'pokemon/hitmonchan.png', 'pokemon/hitmonlee.png', 'pokemon/horsea.png', 'pokemon/hypno.png', 
+    'pokemon/ivysaur.png', 
+    'pokemon/jigglypuff.png', 'pokemon/jolteon.png', 'pokemon/jynx.png', 
+    'pokemon/kabuto.png', 'pokemon/kabutops.png', 'pokemon/kadabra.png', 'pokemon/kakuna.png', 'pokemon/kangaskhan.png', 'pokemon/kingler.png', 'pokemon/koffing.png', 'pokemon/krabby.png', 
+    'pokemon/lapras.png', 'pokemon/lickitung.png', 
+    'pokemon/machamp.png', 'pokemon/machoke.png', 'pokemon/machop.png', 'pokemon/magikarp.png', 'pokemon/magmar.png', 'pokemon/magnemite.png', 'pokemon/magneton.png', 'pokemon/mankey.png', 'pokemon/marowak.png', 'pokemon/meowth.png', 'pokemon/metapod.png', 'pokemon/mew.png', 'pokemon/mewtwo.png', 'pokemon/moltres.png', 'pokemon/mrmime.png', 'pokemon/muk.png', 
+    'pokemon/nidoking.png', 'pokemon/nidoqueen.png', 'pokemon/nidoran-f.png', 'pokemon/nidoran-m.png', 'pokemon/nidorina.png', 'pokemon/nidorino.png', 'pokemon/ninetales.png', 
+    'pokemon/oddish.png', 'pokemon/omanyte.png', 'pokemon/omastar.png', 'pokemon/onix.png', 
+    'pokemon/paras.png', 'pokemon/parasect.png', 'pokemon/persian.png', 'pokemon/pidgeot.png', 'pokemon/pidgeotto.png', 'pokemon/pidgey.png', 'pokemon/pikachu.png', 'pokemon/pinsir.png', 'pokemon/poliwag.png', 'pokemon/poliwhirl.png', 'pokemon/poliwrath.png', 'pokemon/ponyta.png', 'pokemon/porygon.png', 'pokemon/primeape.png', 'pokemon/psyduck.png', 
+    'pokemon/raichu.png', 'pokemon/rapidash.png', 'pokemon/raticate.png', 'pokemon/rattata.png', 'pokemon/rhydon.png', 'pokemon/rhyhorn.png', 
+    'pokemon/sandshrew.png', 'pokemon/sandslash.png', 'pokemon/scyther.png', 'pokemon/seadra.png', 'pokemon/seaking.png', 'pokemon/seel.png', 'pokemon/shellder.png', 'pokemon/slowbro.png', 'pokemon/slowpoke.png', 'pokemon/snorlax.png', 'pokemon/spearow.png', 'pokemon/squirtle.png', 'pokemon/starmie.png', 'pokemon/staryu.png', 
+    'pokemon/tangela.png', 'pokemon/tauros.png', 'pokemon/tentacool.png', 'pokemon/tentacruel.png', 
+    'pokemon/vaporeon.png', 'pokemon/venomoth.png', 'pokemon/venonat.png', 'pokemon/venusaur.png', 'pokemon/victreebel.png', 'pokemon/vileplume.png', 'pokemon/voltorb.png', 'pokemon/vulpix.png', 
+    'pokemon/wartortle.png', 'pokemon/weedle.png', 'pokemon/weepinbell.png', 'pokemon/weezing.png', 'pokemon/wigglytuff.png', 
+    'pokemon/zapdos.png', 'pokemon/zubat.png'
 ];
 
 function initializeApp(){
@@ -48,18 +46,24 @@ function initializeApp(){
     searchLocalStorage();
     setCollection();
     $('.card').on('click', card_clicked);
-    $('.reset').on('click', totalReset);
+    $('.reset').on('click', resetDay);
     $('.info').on('click', showCollection);
     $('.modal > .close').on('click', modalClose);
     $('#sortable').sortable();
+    $('.reborn').on('click', totalReset);
 }
 
-function totalReset(){
+function resetDay(){
     gameReset();
     goToBed();
     setTimeout(
         modalClose, 3000
         );
+}
+
+function totalReset(){
+    alert('Reset all pokemon caught and days traveled. Please refresh page.');
+    localStorage.clear();
 }
 
 function searchLocalStorage(){
@@ -75,9 +79,9 @@ function searchLocalStorage(){
 
         games_played = localStorage.getItem('games_played');
 
-        var collectionString = localStorage.getItem('collection'); //string of object
-        var collectionParse = JSON.parse(collectionString); //return to object
-        collection = Object.values(collectionParse); //assign array of pokemon to collection
+        var collectionString = localStorage.getItem('collection'); 
+        var collectionParse = JSON.parse(collectionString); 
+        collection = Object.values(collectionParse); 
         collectionArray = collection;
     }
 }
@@ -114,18 +118,16 @@ function card_clicked(){
         first_card_clicked = $(this).find('.front img').attr('src');
         first_card_flipped = $(this).find('.back');
         if(first_card_flipped.css('display') === 'none'){
-            $(this).off('click', card_clicked);//turn off click handler on first card WORKS
+            $(this).off('click', card_clicked);
         }
     }else{
         second_card_clicked = $(this).find('.front img').attr('src');
         var second_card_flipped = $(this).find('.back');
         attempts++;
-        $('.card').off('click', card_clicked);// turn off all click handlers
+        $('.card').off('click', card_clicked);
         if(first_card_clicked === second_card_clicked){
             storePokemon();
-            collectionArray.push(second_card_clicked); //push new pokemon into an array
-            collection = Object.assign({}, collectionArray); //convert array into object
-            localStorage.setItem('collection', JSON.stringify(collection)); //set string of object {1:pika} as localStorage.collection
+            pokemonIndex();
             matches++;
             match_counter++;
             caught++;
@@ -138,7 +140,7 @@ function card_clicked(){
             if(match_counter === total_possible_matches){
                 localStorage.setItem('games_played', JSON.stringify(games_played));
                 setTimeout(function(){
-                    totalReset();
+                    resetDay();
                     addHandlersAgain();
                 }, 500);
                 return console.log('One step closer to being a pokemon master!');
@@ -166,7 +168,7 @@ function addHandlersAgain(){
         var siblingCard = parentCard.next();
         var grandparentCard = parentCard.parent();
         if(siblingCard.css('display') === 'block'){
-            $(grandparentCard).on('click', card_clicked);//turn off click handler on first card WORKS
+            $(grandparentCard).on('click', card_clicked);
         }            
     }
 }
@@ -204,6 +206,13 @@ function storePokemon(){
     var newPokemon = addContainer.append(addImage);
 
     $('.modal-content').append(newPokemon);
+
+    collectionArray.push(second_card_clicked);
+}
+
+function pokemonIndex(){
+    collection = Object.assign({}, collectionArray);
+    localStorage.setItem('collection', JSON.stringify(collection));
 }
 
 function showCollection(){

@@ -5,58 +5,46 @@ body {
 
 .top-header {
     height: 20vh;
-    background-color: rgba(0, 0, 0, 0.800);
-    color: lightblue;
+    color:  rgba(0, 0, 0, 0.7);
+    background-image: url(pictures/header.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
-.logo,
-.game-menu,
 .header {
-    font-size: 1rem;
     display: inline-block;
     position: relative;
-}
-
-.game-menu,
-.header {
     width: 100%;
-    position: relative;
     text-align: center;
+    font-size: 15vh;
 }
 
-.logo {
-    height: 15vh;
-    width: 15vh;
-    position: absolute;
-    border: 1px solid aqua;
-    top: 2%;
-    left: 2%;
-    background-image: url(pictures/logo.gif);
-    background-size: contain;
+.header > img {
+    width: 8vh;
 }
 
-.game-menu {
-    font-size: 5vh;
-}
-
-.header {
-    font-size: 10vh;
+sub {
+    font-size: 6vh;
 }
 
 .hero-body {
     height: 80vh;
     background-color: rgb(206, 205, 205);
+    background-image: url(pictures/field.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .stats-container {
     height: 80%;
-    width: 15%;
-    background-color: rgba(0, 0, 0, 0.800);
+    width: 11%;
+    min-width: 152px;
+    background-color: rgba(0, 0, 0, 0.95);
     color: lightblue;
     position: relative;
     display: inline-block;
     top: 10%;
-    left: 5%;
+    left: 9%;
     vertical-align: top;
 }
 
@@ -71,23 +59,27 @@ body {
 .info {
     position: absolute;
     bottom: 30%;
+    width: 100%;
 }
 
 .info > p {
-    font-size: 2.5rem;
+    font-size: 2rem;
     text-align: center;
     margin: 10px;
+    position: relative;
 }
 
 .reset {
     position: absolute;
     bottom: 5%;
-    left: 10%;
+    left: 20%;
     background-image: url(pictures/sleep.jpg);
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
     height: 6vh;
     width: 10vh;
+    max-width: 50%;
 }
 
 .reset:hover,
@@ -96,11 +88,11 @@ body {
 }
 
 .game-area {
-    height: 90%;
+    height: 80%;
     width: 60%;
     position: relative;
     display: inline-block;
-    top: 5%;
+    top: 15%;
     left: 10%;
     text-align: center;
 }
