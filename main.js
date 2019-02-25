@@ -4,8 +4,12 @@ $(document).ready(initializeApp);
 
 var first_card_clicked = null;
 var first_card_flipped = null;
+var first_card_shake = null;
+var first_card_caught = null;
 var second_card_clicked = null;
 var second_card_flipped = null;
+var second_card_shake = null;
+var second_card_caught = null;
 var total_possible_matches = 9;
 var match_counter = 0;
 var matches = 0;
@@ -16,6 +20,16 @@ var modal = $('.modal');
 var games_played = null;
 var collection = null;
 var collectionArray = [];
+var newVolume = 1.0;
+var backgroundMusic = new Audio('sound/background.mp3');
+backgroundMusic.loop = false;
+var jigglySong = new Audio('sound/jigglysleep2.mp3');
+var flee = new Audio('sound/fail.mp3');
+var catch1 = new Audio('sound/catch1.mp3');
+var catch2 = new Audio('sound/catch2.mp3');
+var catch3 = new Audio('sound/catch3.mp3');
+var catch4 = new Audio('sound/catch4.mp3');
+var catch5 = new Audio('sound/catch5.mp3');
 var pokeArray = [
     'pokemon/abra.png', 'pokemon/aerodactyl.png', 'pokemon/alakazam.png', 'pokemon/arbok.png', 'pokemon/arcanine.png', 'pokemon/articuno.png', 
     'pokemon/beedrill.png', 'pokemon/bellsprout.png', 'pokemon/blastoise.png', 'pokemon/bulbasaur.png', 'pokemon/butterfree.png', 
@@ -45,6 +59,7 @@ function initializeApp(){
     randomCard();
     searchLocalStorage();
     setCollection();
+    playBackground();
     $('.card').on('click', card_clicked);
     $('.reset').on('click', resetDay);
     $('.info').on('click', showCollection);
@@ -53,12 +68,54 @@ function initializeApp(){
     $('.reborn').on('click', totalReset);
 }
 
+function playBackground(){
+    backgroundMusic.loop = true;//uncaught (in promise) domexception
+    backgroundMusic.volume = 0.15;
+    backgroundMusic.play();
+}
+
+function pokemonCaught(){
+    catch1.play();
+    setTimeout(function(){
+        catch2.play();
+    }, 500);
+    setTimeout(function(){
+        catch3.play();
+    }, 1000);
+    setTimeout(function(){
+        catch4.play();
+    }, 1500);
+    setTimeout(function(){
+        catch5.play();
+    }, 2000);
+}
+
 function resetDay(){
+    backgroundMusic.volume = 0;
+    jigglySong.play();
+    var morning = setInterval(function(){
+        jigglyFade();
+    }, 495);
     gameReset();
     goToBed();
-    setTimeout(
-        modalClose, 3000
-        );
+    setTimeout(function(){
+        clearInterval(morning);
+        modalClose(),
+        backgroundMusic.volume = 0.15;
+        newVolume = 1.0;
+        jigglySong.volume = newVolume;
+        $('.front img').show();
+        catch1.volume = 1;
+        catch2.volume = 1;
+        catch3.volume = 1;
+        catch4.volume = 1;
+        catch5.volume = 1;
+    }, 2975);
+}
+
+function jigglyFade(){
+    newVolume-=0.15;
+    jigglySong.volume = newVolume;    
 }
 
 function totalReset(){
@@ -117,37 +174,55 @@ function card_clicked(){
     if(first_card_clicked === null){
         first_card_clicked = $(this).find('.front img').attr('src');
         first_card_flipped = $(this).find('.back');
+        first_card_shake = $(this);
+        first_card_caught = $(this).find('.front img');
         if(first_card_flipped.css('display') === 'none'){
             $(this).off('click', card_clicked);
         }
     }else{
         second_card_clicked = $(this).find('.front img').attr('src');
         var second_card_flipped = $(this).find('.back');
+        second_card_shake = $(this);
+        second_card_caught = $(this).find('.front img');
         attempts++;
         $('.card').off('click', card_clicked);
         if(first_card_clicked === second_card_clicked){
+            pokemonCaught();
             storePokemon();
             pokemonIndex();
             matches++;
             match_counter++;
             caught++;
             localStorage.setItem('caught', JSON.stringify(caught));
+            first_card_caught.attr('src', 'pictures/catch.gif');
+            second_card_caught.attr('src', 'pictures/catch.gif');
+            setTimeout(function(){
+                first_card_caught.hide();
+                second_card_caught.hide();
+            }, 2000);
             first_card_clicked = null;
             second_card_clicked = null;
             playerAccuracy();
             display_stats();
-            setTimeout(addHandlersAgain(), 500);
+            setTimeout(function(){
+                addHandlersAgain();
+            }, 2000);
             if(match_counter === total_possible_matches){
+                catch1.volume = 0;
+                catch2.volume = 0;
+                catch3.volume = 0;
+                catch4.volume = 0;
+                catch5.volume = 0;
                 localStorage.setItem('games_played', JSON.stringify(games_played));
-                setTimeout(function(){
-                    resetDay();
-                    addHandlersAgain();
-                }, 500);
+                resetDay();
                 return console.log('One step closer to being a pokemon master!');
             }else{
                 return;
             }
         }else{
+            first_card_shake.effect('shake', {times: 4}, 550);
+            second_card_shake.effect('shake',  {times: 4}, 550);
+            flee.play();
             setTimeout(function(){
                 first_card_flipped.css('display', '');
                 second_card_flipped.css('display', '');
@@ -157,7 +232,7 @@ function card_clicked(){
                 display_stats();
                 addHandlersAgain();
                 return;
-            }, 500);
+            }, 1000);
         }
     }
 }

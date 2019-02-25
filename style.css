@@ -94,7 +94,7 @@ sub {
 
 .game-area {
     height: 80%;
-    width: 60%;
+    width: 70%;
     position: relative;
     display: inline-block;
     top: 15%;
@@ -104,9 +104,9 @@ sub {
 
 .card {
     display: inline-block;
-    height: 30%;
-    width: 14%;
-    margin: 1%;
+    height: 26%;
+    width: 12%;
+    margin: 1% 2%;
     position: relative;
 }
 
@@ -126,7 +126,7 @@ img {
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    background-image: url('pictures/cover.jpg');
+    background-image: url(pictures/cover.jpg);
 }
 
 .modal {
