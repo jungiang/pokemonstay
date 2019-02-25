@@ -1,6 +1,4 @@
 $(document).ready(initializeApp);
-//add beginning explanation -> game info that can be reopened (modal?)
-//card animations and sound for hit and miss
 
 var first_card_clicked = null;
 var first_card_flipped = null;
@@ -23,13 +21,14 @@ var collectionArray = [];
 var newVolume = 1.0;
 var backgroundMusic = new Audio('sound/background.mp3');
 backgroundMusic.loop = false;
-var jigglySong = new Audio('sound/jigglysleep2.mp3');
+var jigglySong = new Audio('sound/jigglysleep.mp3');
 var flee = new Audio('sound/fail.mp3');
 var catch1 = new Audio('sound/catch1.mp3');
 var catch2 = new Audio('sound/catch2.mp3');
 var catch3 = new Audio('sound/catch3.mp3');
 var catch4 = new Audio('sound/catch4.mp3');
 var catch5 = new Audio('sound/catch5.mp3');
+var game_start = new Audio('sound/game_start.mp3');
 var pokeArray = [
     'pokemon/abra.png', 'pokemon/aerodactyl.png', 'pokemon/alakazam.png', 'pokemon/arbok.png', 'pokemon/arcanine.png', 'pokemon/articuno.png', 
     'pokemon/beedrill.png', 'pokemon/bellsprout.png', 'pokemon/blastoise.png', 'pokemon/bulbasaur.png', 'pokemon/butterfree.png', 
@@ -56,20 +55,25 @@ var pokeArray = [
 ];
 
 function initializeApp(){
+    game_start.volume = 0.5;
+    game_start.play();
     randomCard();
     searchLocalStorage();
     setCollection();
-    playBackground();
+    $('#sortable').sortable();
+
+    $('.play').on('click', playBackground);
     $('.card').on('click', card_clicked);
     $('.reset').on('click', resetDay);
     $('.info').on('click', showCollection);
-    $('.modal > .close').on('click', modalClose);
-    $('#sortable').sortable();
+    $('.menu').on('click', showMenu);
+    $('.close').on('click', modalClose);
     $('.reborn').on('click', totalReset);
 }
 
 function playBackground(){
-    backgroundMusic.loop = true;//uncaught (in promise) domexception
+    game_start.pause();
+    backgroundMusic.loop = true;
     backgroundMusic.volume = 0.15;
     backgroundMusic.play();
 }
@@ -101,10 +105,10 @@ function resetDay(){
     setTimeout(function(){
         clearInterval(morning);
         modalClose(),
+        $('.front img').show();
         backgroundMusic.volume = 0.15;
         newVolume = 1.0;
         jigglySong.volume = newVolume;
-        $('.front img').show();
         catch1.volume = 1;
         catch2.volume = 1;
         catch3.volume = 1;
@@ -124,7 +128,7 @@ function totalReset(){
 }
 
 function searchLocalStorage(){
-    if(!localStorage.games_played){
+    if(!localStorage.length || localStorage.caught <= 1){
         localStorage.caught = 1;
         caught = JSON.parse(localStorage.caught);
         localStorage.games_played = 0;
@@ -147,7 +151,7 @@ function setCollection(){
     if(collectionArray[0]){
         for(i = 0; i < collection.length; i++){
             var addContainer = $('<div>').addClass('collection');
-            var addImage = $('<img>').attr('src', collection[i]);//add alt later
+            var addImage = $('<img>').attr('src', collection[i]);
             var newPokemon = addContainer.append(addImage);
             $('.stash').append(newPokemon);    
         }    
@@ -277,10 +281,10 @@ function reset_stats(){
 
 function storePokemon(){
     var addContainer = $('<div>').addClass('collection');
-    var addImage = $('<img>').attr('src', second_card_clicked);//add alt later
+    var addImage = $('<img>').attr('src', second_card_clicked);
     var newPokemon = addContainer.append(addImage);
 
-    $('.modal-content').append(newPokemon);
+    $('.stash').append(newPokemon);
 
     collectionArray.push(second_card_clicked);
 }
@@ -292,6 +296,10 @@ function pokemonIndex(){
 
 function showCollection(){
     $('#pokedex').css('display', 'block');
+}
+
+function showMenu(){
+    $('#instructions').css('display', 'block');
 }
 
 function modalClose(){
@@ -306,4 +314,3 @@ function goToBed(){
         modalContent.removeClass('flute');
     }, 3000)
 }
-

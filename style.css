@@ -88,8 +88,23 @@ sub {
 }
 
 .reset:hover,
-.reset:focus {
+.reset:focus,
+.menu:hover,
+.menu:focus {
     cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    bottom: 3%;
+    right: 2%;
+    width: 8%;
+    border-radius: 100px;
+    border: 3px ridge rgba(26, 26, 134, 0.7);
+    background-color: rgba(255, 183, 0, 0.7);
+    font-family: 'Orbitron', sans-serif, cursive;
+    font-weight: bolder;
+    color: rgba(26, 26, 134, 0.8);
 }
 
 .game-area {
@@ -189,6 +204,45 @@ img {
     background-image: url(pictures/pokeball.jpg);
     background-size: cover;
     background-position: center;
+}
+
+#instructions {
+    background-image: url(pictures/map.jpg);
+    background-size: cover;
+    background-position: center;
+    display: block;
+}
+
+.play:hover,
+.play.focus {
+    color: rgb(7, 134, 17);
+    text-decoration: lawngreen;
+    cursor: pointer;
+}
+
+.play {
+    color: rgb(110, 0, 0);
+    font-weight: bold;
+    top: 2%;
+    right: 3%;
+}
+
+.help {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.professor {
+    transform: scaleX(-1);
+    height: 40%;
+    position: absolute;
+    left: 1%;
+    bottom: 10%;
+}
+
+.manuel {
+    margin: 0 12%;
 }
 
 .tired {
