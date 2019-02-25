@@ -214,10 +214,23 @@ img {
 }
 
 .play:hover,
-.play.focus {
+.play.focus,
+.mute:hover,
+.mute:focus,
+.about:hover,
+.about.focus {
     color: rgb(7, 134, 17);
     text-decoration: lawngreen;
     cursor: pointer;
+}
+
+.mute {
+    color: rgb(110, 0, 0);
+    top: 2%;
+    left: 3%;
+    font-size: 3vh;
+    font-weight: bold;
+    position: absolute;
 }
 
 .play {
@@ -225,6 +238,15 @@ img {
     font-weight: bold;
     top: 2%;
     right: 3%;
+}
+
+.about {
+    color: rgb(110, 0, 0);
+    top: 6%;
+    left: 3%;
+    font-size: 2.5vh;
+    font-weight: bold;
+    position: absolute;
 }
 
 .help {

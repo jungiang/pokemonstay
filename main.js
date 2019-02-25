@@ -29,6 +29,8 @@ var catch3 = new Audio('sound/catch3.mp3');
 var catch4 = new Audio('sound/catch4.mp3');
 var catch5 = new Audio('sound/catch5.mp3');
 var game_start = new Audio('sound/game_start.mp3');
+var audioArray = [game_start, backgroundMusic, jigglySong, flee, catch1, catch2, catch3, catch4, catch5];
+game_start.muted = false;
 var pokeArray = [
     'pokemon/abra.png', 'pokemon/aerodactyl.png', 'pokemon/alakazam.png', 'pokemon/arbok.png', 'pokemon/arcanine.png', 'pokemon/articuno.png', 
     'pokemon/beedrill.png', 'pokemon/bellsprout.png', 'pokemon/blastoise.png', 'pokemon/bulbasaur.png', 'pokemon/butterfree.png', 
@@ -55,13 +57,13 @@ var pokeArray = [
 ];
 
 function initializeApp(){
-    game_start.volume = 0.5;
-    game_start.play();
     randomCard();
     searchLocalStorage();
     setCollection();
+    game_start.volume = 0.5;
+    toggleSound();
     $('#sortable').sortable();
-
+    $('.mute').on('click', intro);
     $('.play').on('click', playBackground);
     $('.card').on('click', card_clicked);
     $('.reset').on('click', resetDay);
@@ -71,7 +73,25 @@ function initializeApp(){
     $('.reborn').on('click', totalReset);
 }
 
+function intro(){
+    toggleSound();
+    game_start.play();
+}
+
+function toggleSound(){
+    if(game_start.muted === true){
+        for(i = 0; i < audioArray.length; i++){
+            audioArray[i].muted = false;
+        }
+    }else{
+        for(i = 0; i < audioArray.length; i++){
+            audioArray[i].muted = true;
+        }
+    }
+}
+
 function playBackground(){
+    game_start.volume = 0;
     game_start.pause();
     backgroundMusic.loop = true;
     backgroundMusic.volume = 0.15;
