@@ -1,6 +1,11 @@
 body {
     font-size: 0px;
     margin: 0px;
+    overflow: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }
 
 .top-header {
@@ -37,6 +42,7 @@ sub {
     background-image: url(pictures/field.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-x: 50%;
 }
 
 .stats-container {
@@ -96,9 +102,9 @@ sub {
 
 .menu {
     position: absolute;
-    bottom: 3%;
-    right: 2%;
-    width: 8%;
+    bottom: 2%;
+    right: 4%;
+    width: 5%;
     border-radius: 100px;
     border: 3px ridge rgba(26, 26, 134, 0.7);
     background-color: rgba(255, 183, 0, 0.7);
@@ -159,6 +165,7 @@ img {
     height: 95%;
     margin: 5vh 5vw;
     overflow: scroll;
+    overflow-x: hidden;
 }
 
 .close {
@@ -219,18 +226,18 @@ img {
 .mute:focus,
 .about:hover,
 .about.focus {
-    color: rgb(7, 134, 17);
-    text-decoration: lawngreen;
+    color: rgba(255, 183, 0, 0.7);
     cursor: pointer;
 }
 
 .mute {
-    color: rgb(110, 0, 0);
-    top: 2%;
-    left: 3%;
+    color: rgba(26, 26, 134, 0.7);
+    right: 1%;
+    bottom: 3%;
     font-size: 3vh;
     font-weight: bold;
     position: absolute;
+    z-index: 10;
 }
 
 .play {
@@ -265,6 +272,7 @@ img {
 
 .manuel {
     margin: 0 12%;
+    overflow-x: hidden;
 }
 
 .tired {
