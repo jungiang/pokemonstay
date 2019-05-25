@@ -28,6 +28,7 @@ var catch2 = new Audio('sound/catch2.mp3');
 var catch3 = new Audio('sound/catch3.mp3');
 var catch4 = new Audio('sound/catch4.mp3');
 var catch5 = new Audio('sound/catch5.mp3');
+var throw_pokeball = new Audio('sound/throw.mp3');
 var game_start = new Audio('sound/game_start.mp3');
 var audioArray = [game_start, backgroundMusic, jigglySong, flee, catch1, catch2, catch3, catch4, catch5];
 game_start.muted = false;
@@ -60,6 +61,7 @@ function initializeApp(){
     randomCard();
     searchLocalStorage();
     setCollection();
+    display_stats();
     game_start.volume = 0.5;
     toggleSound();
     $('#sortable').sortable();
@@ -74,6 +76,7 @@ function initializeApp(){
 }
 
 function intro(){
+    $('.fas').toggleClass('fa-volume-up').toggleClass('fa-volume-mute')
     toggleSound();
     game_start.play();
 }
@@ -99,19 +102,22 @@ function playBackground(){
 }
 
 function pokemonCaught(){
-    catch1.play();
+    throw_pokeball.play();
+    setTimeout(function(){
+        catch1.play();
+    }, 750);
     setTimeout(function(){
         catch2.play();
-    }, 500);
+    }, 1250);
     setTimeout(function(){
         catch3.play();
-    }, 1000);
+    }, 1750);
     setTimeout(function(){
         catch4.play();
-    }, 1500);
+    }, 2250);
     setTimeout(function(){
         catch5.play();
-    }, 2000);
+    }, 2750);
 }
 
 function resetDay(){
@@ -218,30 +224,27 @@ function card_clicked(){
             match_counter++;
             caught++;
             localStorage.setItem('caught', JSON.stringify(caught));
-            first_card_caught.attr('src', 'pictures/catch.gif');
-            second_card_caught.attr('src', 'pictures/catch.gif');
+            setTimeout(function(){
+                first_card_caught.attr('src', 'pictures/catch.gif');
+                second_card_caught.attr('src', 'pictures/catch.gif');
+            }, 750);
             setTimeout(function(){
                 first_card_caught.hide();
                 second_card_caught.hide();
-            }, 2000);
+            }, 2750);
             first_card_clicked = null;
             second_card_clicked = null;
             playerAccuracy();
             display_stats();
             setTimeout(function(){
                 addHandlersAgain();
-            }, 2000);
+            }, 3000);
             if(match_counter === total_possible_matches){
-                catch1.volume = 0;
-                catch2.volume = 0;
-                catch3.volume = 0;
-                catch4.volume = 0;
-                catch5.volume = 0;
                 localStorage.setItem('games_played', JSON.stringify(games_played));
-                resetDay();
-                return console.log('One step closer to being a pokemon master!');
-            }else{
-                return;
+                setTimeout(function(){
+                    resetDay();
+                    addHandlersAgain();
+                }, 3500);
             }
         }else{
             first_card_shake.effect('shake', {times: 4}, 550);
