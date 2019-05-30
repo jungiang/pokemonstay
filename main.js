@@ -58,6 +58,7 @@ var pokeArray = [
 ];
 
 function initializeApp(){
+    checkWindowSize();
     randomCard();
     searchLocalStorage();
     setCollection();
@@ -73,6 +74,20 @@ function initializeApp(){
     $('.menu').on('click', playGame);
     $('.close').on('click', modalClose);
     $('.reborn').on('click', totalReset);
+
+    $(window).resize(()=>{
+        checkWindowSize();
+    })
+}
+
+function checkWindowSize(){
+    if($(window).width() < 992 || $(window).height() < 600){
+        $('.content').hide();
+        $('.broken-screen').show();
+    }else{
+        $('.content').show();
+        $('.broken-screen').hide();
+    }
 }
 
 function intro(){

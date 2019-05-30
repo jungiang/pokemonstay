@@ -103,7 +103,7 @@ sub {
 .menu {
     position: absolute;
     bottom: 2rem;
-    right: 6rem;
+    right: 8rem;
     height: 50px;
     width: 80px;
     border-radius: 25px;
@@ -113,6 +113,7 @@ sub {
     font-weight: bold;
     font-size: 1rem;
     color: rgba(26, 26, 134, 0.8);
+    transform: translateX(50%);
     z-index: 10;
 }
 
@@ -283,6 +284,7 @@ img {
 }
 
 .manuel {
+    height: 80%;
     margin: 0 12%;
     overflow-x: hidden;
 }
@@ -314,3 +316,23 @@ img {
     }
 }
 
+.broken-screen {
+    background-color: lightgrey;
+    background-image: url(pictures/broken_screen_2.gif);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center 80%;
+    height: 100vh;
+    width: 100vw;
+    z-index: 20;
+    display: none;
+}
+
+.broken-screen>.broken-message {
+    font-size: 2rem;
+    width: 70%;
+    position: absolute;
+    transform: translateX(50%);
+    right: 50%;
+    text-align: center;
+}
