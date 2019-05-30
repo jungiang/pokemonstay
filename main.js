@@ -70,7 +70,7 @@ function initializeApp(){
     $('.card').on('click', card_clicked);
     $('.reset').on('click', resetDay);
     $('.info').on('click', showCollection);
-    $('.menu').on('click', showMenu);
+    $('.menu').on('click', playGame);
     $('.close').on('click', modalClose);
     $('.reborn').on('click', totalReset);
 }
@@ -323,6 +323,18 @@ function showCollection(){
 
 function showMenu(){
     $('#instructions').css('display', 'block');
+}
+
+function playGame(){
+    var playButton = $('.menu');
+    if(playButton.text() === 'Play'){
+        playButton.text('Menu');
+        playButton.toggleClass('play')
+    }else{
+        playButton.text('Play');
+        playButton.toggleClass('play')
+    }
+    $('#instructions').toggle();
 }
 
 function modalClose(){

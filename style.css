@@ -102,15 +102,27 @@ sub {
 
 .menu {
     position: absolute;
-    bottom: 2%;
-    right: 4%;
-    width: 5%;
-    border-radius: 100px;
+    bottom: 2rem;
+    right: 6rem;
+    height: 50px;
+    width: 80px;
+    border-radius: 25px;
     border: 3px ridge rgba(26, 26, 134, 0.7);
     background-color: rgba(255, 183, 0, 0.7);
     font-family: 'Orbitron', sans-serif, cursive;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 1rem;
     color: rgba(26, 26, 134, 0.8);
+    z-index: 10;
+}
+
+.play {
+    bottom: 2rem;
+    right: 50vw;
+    height: 100px;
+    width: 180px;
+    border-radius: 50px;
+    font-size: 2.5rem;
 }
 
 .game-area {
@@ -185,6 +197,15 @@ img {
     bottom: 2%;
 }
 
+.menu:hover {
+    font-size: 1.25rem;
+    font-weight: bolder;
+}
+
+.play:hover {
+    font-size: 3rem;
+}
+
 .close:hover,
 .close:focus,
 .info:hover,
@@ -220,8 +241,6 @@ img {
     display: block;
 }
 
-.play:hover,
-.play.focus,
 .mute:hover,
 .mute:focus,
 .about:hover,
@@ -232,19 +251,12 @@ img {
 
 .mute {
     color: rgba(26, 26, 134, 0.7);
-    right: 1%;
-    bottom: 3%;
-    font-size: 3vh;
+    right: 2rem;
+    bottom: 2rem;
+    font-size: 2rem;
     font-weight: bold;
     position: absolute;
     z-index: 10;
-}
-
-.play {
-    color: rgb(110, 0, 0);
-    font-weight: bold;
-    top: 2%;
-    right: 3%;
 }
 
 .about {
