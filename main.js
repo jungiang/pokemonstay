@@ -30,8 +30,10 @@ var catch4 = new Audio('sound/catch4.mp3');
 var catch5 = new Audio('sound/catch5.mp3');
 var throw_pokeball = new Audio('sound/throw.mp3');
 var game_start = new Audio('sound/game_start.mp3');
-var audioArray = [game_start, backgroundMusic, jigglySong, flee, catch1, catch2, catch3, catch4, catch5];
+var audioArray = [game_start, backgroundMusic, jigglySong, flee, catch1, catch2, catch3, catch4, catch5, throw_pokeball];
 game_start.muted = false;
+var moveStart = null;
+var moveStop = null;
 var pokeArray = [
     'pokemon/abra.png', 'pokemon/aerodactyl.png', 'pokemon/alakazam.png', 'pokemon/arbok.png', 'pokemon/arcanine.png', 'pokemon/articuno.png', 
     'pokemon/beedrill.png', 'pokemon/bellsprout.png', 'pokemon/blastoise.png', 'pokemon/bulbasaur.png', 'pokemon/butterfree.png', 
@@ -65,7 +67,17 @@ function initializeApp(){
     display_stats();
     game_start.volume = 0.5;
     toggleSound();
-    $('#sortable').sortable();
+    $('#sortable').sortable({
+        start: function(event, ui){
+            moveStart = ui.item.index();
+        },
+        stop: function(event, ui){
+            moveStop = ui.item.index();
+            var movingPokemon = collectionArray.splice(moveStart, 1);
+            collectionArray.splice(moveStop, 0, movingPokemon[0]);
+            pokemonIndex();
+        }
+    });
     $('.mute').on('click', intro);
     $('.play').on('click', playBackground);
     $('.card').on('click', card_clicked);
@@ -174,8 +186,10 @@ function searchLocalStorage(){
         caught = JSON.parse(localStorage.caught);
         localStorage.games_played = 0;
         games_played = JSON.parse(localStorage.games_played);
-        localStorage.collection = {};
-        collection = localStorage.collection;
+        localStorage.collection = '{"0":"pokemon/pikachu.png"}';
+        var collectionParse = JSON.parse(localStorage.collection);
+        collection = Object.values(collectionParse);
+        collectionArray = collection;
     }else{
         caught = localStorage.getItem('caught');
 
@@ -195,7 +209,7 @@ function setCollection(){
             var addImage = $('<img>').attr('src', collection[i]);
             var newPokemon = addContainer.append(addImage);
             $('.stash').append(newPokemon);    
-        }    
+        }
     }
 }
 
