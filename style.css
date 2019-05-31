@@ -163,6 +163,7 @@ img {
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     position: absolute;
     background-image: url(pictures/cover.jpg);
 }
@@ -331,7 +332,7 @@ img {
 
 .broken-screen {
     background-color: lightgrey;
-    background-image: url(pictures/broken_screen_2.gif);
+    background-image: url(pictures/screen_break.gif);
     background-repeat: no-repeat;
     background-size: 70%;
     background-position: center 80%;
