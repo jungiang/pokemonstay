@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,226 +11,275 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Aclonica|Bungee+Inline|Orbitron" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <script src="main.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="pictures/icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="broken-screen">
         <div class="broken-message">
             <h1>SORRY</h1>
             <p>
-                Your screen size is too small to play the app!    
+                Your screen size is too small to play the app!
             </p>
         </div>
     </div>
     <div class="content">
-            <div class="top-header">
-                    <div class="header">
-                        <span>P</span><img src="pictures/headerball.gif" alt=""><span>k&eacute;mon</span><sub><em>Stay</em></sub>
+        <div class="top-header">
+            <div class="header">
+                <span>P</span><img src="pictures/headerball.gif"
+                    alt=""><span>k&eacute;mon</span><sub><em>Stay</em></sub>
+            </div>
+        </div>
+        <div class="hero-body">
+            <div class="stats-container">
+                <div class="games-played">
+                    <div class="label">Days Traveled:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="caught">
+                    <div class="label">Pok&eacute;mon Caught:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="accuracy">
+                    <div class="label">Accuracy:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="info">
+                    <p>Pok&eacute;mon</p>
+                    <p>Collection</p>
+                </div>
+                <button class="reset"></button>
+            </div>
+            <div class="game-area">
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="1">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
                     </div>
                 </div>
-                <div class="hero-body">
-                    <div class="stats-container">
-                        <div class="games-played">
-                            <div class="label">Days Traveled:</div>
-                            <div class="value"></div>
-                        </div>
-                        <div class="caught">
-                            <div class="label">Pok&eacute;mon Caught:</div>
-                            <div class="value"></div>    
-                        </div>
-                        <div class="accuracy">
-                            <div class="label">Accuracy:</div>
-                            <div class="value"></div>        
-                        </div>
-                        <div class="info">
-                            <p>Pok&eacute;mon</p>
-                            <p>Collection</p>
-                        </div>
-                        <button class="reset"></button>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="2">
                     </div>
-                    <div class="game-area">
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="1">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="2">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="3">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="4">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="5">
-                            </div>
-                        <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="6">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="7">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="8">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="9">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="10">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="11">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="12">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                    <img src="" alt="" data-value="13">
-                            </div>
-                            <div class="back">
-                                    <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="14">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="15">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="16">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="17">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="front">
-                                <img src="" alt="" data-value="18">
-                            </div>
-                            <div class="back">
-                                <img src="" alt="">
-                            </div>
-                        </div>           
-                    </div>
-                    <button class="menu play">Play</button>
-                </div>
-                <span class="mute"><i class="fas fa-volume-mute"></i></span>
-                <div id="pokedex" class="modal">
-                    <span class="close">x</span>
-                    <span class="reborn">Reset Journey</span>
-                    <div id="sortable" class="modal-content stash"></div>
-                </div>
-                <div id="sleep" class="modal">
-                    <div class="modal-content tired">
-                        <p>On to the next day!</p>
-                        <div class="sleeping">
-                            <img src="pictures/reset.gif" alt="">
-                        </div>
+                    <div class="back">
+                        <img src="" alt="">
                     </div>
                 </div>
-                <div id="instructions" class="modal">
-                    <div class="modal-content help">
-                        <div class="professor">
-                            <img src="pictures/oak.png" alt="">
-                        </div>
-                        <div class="manuel">
-                            <h2>Welcome trainer to the wonderful world of pokemon</h2>
-                            <p>In this game, you can capture pokemon as you match two of a kind. Simply click on the card backs and reveal what pokemon awaits you.</p>
-                            <p>If you fail in getting a pair, the pokemon will flee. Fear not, they will still stay in the area so you can simply try again.</p>
-                            <p>If you capture every pok&eacute;mon in a round, it will move on to the next day and re-populate the fields. If you are having a tough time, you can also reset the board by clicking on the JigglyPuff button and have her sing you to sleep.</p>
-                            <p>Once captured, the pokemon will remain in your collection even if you close the game! Just click on the "Pok&eacute;mon Collection" to see everything you have captured so far.</p>
-                            <p>I will be keeping track of how many days you have spent on your journey, how many pokemon total you have caught, and even your accuracy in each round. You can find all those details on the main page!</p>
-                            <p>However, if you would like to reset your entire journey including everything you have caught, you can find the "Reset Journey" button on the collection page.</p>
-                            <p>To start you off, I'll leave this pikachu in your care!</p>
-                            <p>If you need any more assistance, then you may come back to me with the "Game Menu" button on the main page.</p>
-                            <h2>There are 151 discovered pokemon in our world, so enjoy your time exploring and making new friends.</h2>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="3">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="4">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="5">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="6">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="7">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="8">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="9">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="10">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="11">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="12">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="13">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="14">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="15">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="16">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="17">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="18">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
                     </div>
                 </div>
             </div>
+            <button class="menu play">Play</button>
+        </div>
+        <span class="mute"><i class="fas fa-volume-mute"></i></span>
+        <div id="pokedex" class="modal">
+            <span class="close">x</span>
+            <button class="reborn">Reset</button>
+            <div id="sortable" class="modal-content stash"></div>
+        </div>
+        <div id="sleep" class="modal">
+            <div class="modal-content tired">
+                <p>On to the next day!</p>
+                <div class="sleeping">
+                    <img src="pictures/reset.gif" alt="">
+                </div>
+            </div>
+        </div>
+        <div id="instructions" class="modal">
+            <div class="modal-content help">
+                <div class="professor">
+                    <img src="pictures/oak.png" alt="">
+                </div>
+                <div class="manuel">
+                    <div class="slideshow-container">
+                        <div class="slides fade">
+                            <div class="numbertext">1 / 8</div>
+                            <img src="pictures/slide1.jpg" style="width:100%">
+                            <div class="text">Welcome trainer to the wonderful world of pokemon!</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">2 / 8</div>
+                            <img src="pictures/slide2.PNG" style="width:100%">
+                            <div class="text">Click on the pokemon cover to reveal which pokemon is hiding in the grass.</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">3 / 8</div>
+                            <img src="pictures/slide3.PNG" style="width:100%">
+                            <div class="text">If you match two of the same pokemon, you will catch one for your collection. Else it will run away!</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">4 / 8</div>
+                            <img src="pictures/slide4.1.PNG" style="width:100%">
+                            <div class="text">When all hidden pokemon have been revealed, it will transition to the next day and the fields will full of new pokekmon! Click on the jigglypuff icon to have her sing you to sleep and wait for the next day.</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">5 / 8</div>
+                            <img src="pictures/slide5.PNG" style="width:100%">
+                            <div class="text">On the left side is your progress tracker. You can find information involving your journey here and a way to see all the pokemon you have collected.</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">6 / 8</div>
+                            <img src="pictures/slide6.PNG" style="width:100%">
+                            <div class="text">Your collection will keep all the pokemon you have collected even if you close the game. Re-arrange them to your liking!</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">7 / 8</div>
+                            <img src="pictures/slide7.PNG" style="width:100%">
+                            <div class="text">If you feel like you want to restart your journey, click the "Reset" button and you will start back on first day with no pokemon.</div>
+                        </div>
+                        <div class="slides fade">
+                            <div class="numbertext">8 / 8</div>
+                            <img src="pictures/slide8.jpg" style="width:100%">
+                            <div class="text">There are 151 discovered pokemon in our world, so enjoy your time exploring and making new friends. To start you off, I'll leave this pikachu in your care!</div>
+                        </div>
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                        <span class="dot" onclick="currentSlide(4)"></span>
+                        <span class="dot" onclick="currentSlide(5)"></span>
+                        <span class="dot" onclick="currentSlide(6)"></span>
+                        <span class="dot" onclick="currentSlide(7)"></span>
+                        <span class="dot" onclick="currentSlide(8)"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>
