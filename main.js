@@ -34,6 +34,7 @@ var audioArray = [game_start, backgroundMusic, jigglySong, flee, catch1, catch2,
 game_start.muted = false;
 var moveStart = null;
 var moveStop = null;
+var slideIndex = 1;
 var pokeArray = [
     'pokemon/abra.png', 'pokemon/aerodactyl.png', 'pokemon/alakazam.png', 'pokemon/arbok.png', 'pokemon/arcanine.png', 'pokemon/articuno.png', 
     'pokemon/beedrill.png', 'pokemon/bellsprout.png', 'pokemon/blastoise.png', 'pokemon/bulbasaur.png', 'pokemon/butterfree.png', 
@@ -61,6 +62,7 @@ var pokeArray = [
 
 function initializeApp(){
     checkWindowSize();
+    showSlides(slideIndex);
     randomCard();
     searchLocalStorage();
     setCollection();
@@ -378,9 +380,6 @@ function goToBed(){
         modalContent.removeClass('flute');
     }, 3000)
 }
-
-var slideIndex = 1;
-showSlides(slideIndex);
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
