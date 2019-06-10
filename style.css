@@ -385,10 +385,6 @@ img {
     width: 100%;
 }
 
-.firstSlide {
-    display: block;
-  }  
-
 .prev, .next {
   cursor: pointer;
   position: absolute;
