@@ -391,6 +391,7 @@ img {
 }
 
 .tired {
+    height: 100%;
     margin: 0;
     padding: 5%;
     overflow: hidden;
@@ -433,8 +434,7 @@ img {
     height: 60vmin;
     background-image: url(pictures/screen_break.gif);
     background-repeat: no-repeat;
-    background-size: 70%;
-    background-position: center 80%;
+    background-position: 50%;
 }
 
 .broken-screen>.broken-message {
@@ -561,9 +561,9 @@ img {
 
 .fade {
   -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
+  -webkit-animation-duration: 0.75s;
   animation-name: fade;
-  animation-duration: 1.5s;
+  animation-duration: 0.75s;
 }
 
 @-webkit-keyframes fade {
