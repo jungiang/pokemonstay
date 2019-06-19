@@ -88,6 +88,9 @@ function initializeApp(){
     $('.menu').on('click', playGame);
     $('.close').on('click', modalClose);
     $('.reborn').on('click', totalReset);
+    $('.yesRestart').on('click', yesRestart);
+    $('.noRestart').on('click', noRestart);
+    $(window).on('click', modalShadow);
 
     $(window).resize(()=>{
         checkWindowSize();
@@ -178,12 +181,31 @@ function jigglyFade(){
 }
 
 function totalReset(){
-    alert('Reset all pokemon caught and days traveled. Please refresh page.');
+    $('#restart').show();
+}
+
+function yesRestart(){
+    var goodbye = $('<p>').addClass('goodbye').text('Good luck on your next journey!');
+    $('#restart>.modal-content').append(goodbye);
     localStorage.clear();
+    setTimeout(function(){
+        location.reload();
+    }, 1500);
+}
+
+function noRestart(){
+    $('#restart').hide();
+}
+
+function modalShadow(e){
+    var modal = $('#restart');
+    if(e.target === modal[0]){
+        modal.hide();
+    }
 }
 
 function searchLocalStorage(){
-    if(!localStorage.length || localStorage.caught <= 1){
+    if(!localStorage.games_played || !localStorage.collection || !localStorage.caught){
         localStorage.caught = 1;
         caught = JSON.parse(localStorage.caught);
         localStorage.games_played = 0;
@@ -359,11 +381,15 @@ function showMenu(){
 function playGame(){
     var playButton = $('.menu');
     if(playButton.text() === 'Play'){
-        playButton.text('Menu');
+        playButton.text('?');
         playButton.toggleClass('play')
     }else{
         playButton.text('Play');
         playButton.toggleClass('play')
+    }
+    var pokedex = $('#pokedex');
+    if(pokedex.css('display') === 'block'){
+        pokedex.hide();
     }
     $('#instructions').toggle();
 }
