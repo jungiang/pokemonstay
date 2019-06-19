@@ -298,6 +298,12 @@ img {
     z-index: 10;
 }
 
+.mute>i{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .about {
     color: rgb(110, 0, 0);
     top: 6%;
@@ -372,7 +378,7 @@ img {
 .yesRestart:hover,
 .noRestart:hover,
 .yesRestart:focus {
-    font-size: 3rem;
+    transform: scale(1.5);
     outline: none;
 }
 
