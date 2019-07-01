@@ -559,6 +559,23 @@ img {
   background-color: rgba(26, 26, 134, 0.85);
 }
 
+@media only screen and (max-height: 600px){
+    .play {
+        height: 75px;
+        width: 135px;
+        border-radius: 37.5px;
+        font-size: 2rem;
+        }
+
+    .play:hover {
+        font-size: 2.5rem;
+    }        
+
+    .dotContainer {
+        bottom: 7rem;
+    }        
+}
+
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 0.75s;

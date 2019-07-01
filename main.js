@@ -98,7 +98,7 @@ function initializeApp(){
 }
 
 function checkWindowSize(){
-    if($(window).width() < 992 || $(window).height() < 600){
+    if($(window).width() < 992 || $(window).height() < 568){
         $('.content').hide();
         $('.broken-screen').show();
     }else{
