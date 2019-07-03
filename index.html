@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pokemon Stay</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Aclonica|Bungee+Inline|Orbitron" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="main.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="pictures/icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="broken-screen">
+        <div class="broken-message">
+            <h1>SORRY</h1>
+            <p>
+                Your screen size is too small to play the app!
+            </p>
+        </div>
+        <div class="broken-img"></div>
+    </div>
+    <div class="content">
+            <div id="instructions" class="modal">
+                    <div class="modal-content help">
+                        <div class="professor">
+                            <img src="pictures/oak.png" alt="">
+                        </div>
+                        <div class="manuel">
+                            <div class="slideshow-container">
+                                <div class="firstSlide slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide1.jpg">
+                                    </div>
+                                    <div class="numbertext">1 / 8</div>
+                                    <div class="text">Welcome trainer to the wonderful world of pokemon!</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide2.PNG">
+                                    </div>
+                                    <div class="numbertext">2 / 8</div>
+                                    <div class="text">Click on the pokemon cover to reveal which pokemon is hiding in the grass.</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide3.PNG">
+                                    </div>
+                                    <div class="numbertext">3 / 8</div>
+                                    <div class="text">If you match two of the same pokemon, you will catch one for your collection or else it will run away!</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide4.PNG">
+                                    </div>
+                                    <div class="numbertext">4 / 8</div>
+                                    <div class="text">After catching all the pokemon, the field will reset with new pokemon or click on the jigglypuff icon to do it manually.</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide5.PNG">
+                                    </div>
+                                    <div class="numbertext">5 / 8</div>
+                                    <div class="text">Here is the progress tracker with information involving your journey and where to see your captured pokemon.</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide6.PNG">
+                                    </div>
+                                    <div class="numbertext">6 / 8</div>
+                                    <div class="text">Your collection will keep all the pokemon you have collected even if you close the game. Re-arrange them to your liking!</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide7.PNG">
+                                    </div>
+                                    <div class="numbertext">7 / 8</div>
+                                    <div class="text">If you want to restart, click the "Reset" button and you will start back on first day with no pokemon captured.</div>
+                                </div>
+                                <div class="slides fade">
+                                    <div class="imageContainer">
+                                        <img src="pictures/slide8.jpg">
+                                    </div>
+                                    <div class="numbertext">8 / 8</div>
+                                    <div class="text">There are 151 pokemon, so enjoy exploring and making new friends. To start you off, I'll leave this pikachu in your care!</div>
+                                </div>
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                            </div>
+                        </div>
+                        <div class="dotContainer" style="text-align:center">
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                            <span class="dot" onclick="currentSlide(2)"></span>
+                            <span class="dot" onclick="currentSlide(3)"></span>
+                            <span class="dot" onclick="currentSlide(4)"></span>
+                            <span class="dot" onclick="currentSlide(5)"></span>
+                            <span class="dot" onclick="currentSlide(6)"></span>
+                            <span class="dot" onclick="currentSlide(7)"></span>
+                            <span class="dot" onclick="currentSlide(8)"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-header">
+            <div class="header">
+                <span>P</span><img src="pictures/headerball.gif"
+                    alt=""><span>k&eacute;mon</span><sub><em>Stay</em></sub>
+            </div>
+        </div>
+        <div class="hero-body">
+            <div class="stats-container">
+                <div class="games-played">
+                    <div class="label">Days Traveled:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="caught">
+                    <div class="label">Pok&eacute;mon Caught:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="accuracy">
+                    <div class="label">Accuracy:</div>
+                    <div class="value"></div>
+                </div>
+                <div class="info">
+                    <p>Pok&eacute;mon</p>
+                    <p>Collection</p>
+                </div>
+                <button class="reset"></button>
+            </div>
+            <div class="game-area">
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="1">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="2">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="3">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="4">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="5">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="6">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="7">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="8">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="9">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="10">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="11">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="12">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="13">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="14">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="15">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="16">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="17">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="front">
+                        <img src="" alt="" data-value="18">
+                    </div>
+                    <div class="back">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+            <button class="menu play">Play</button>
+        </div>
+        <span class="mute"><i class="fas fa-volume-mute"></i></span>
+        <div id="pokedex" class="modal">
+            <span class="close">x</span>
+            <button class="reborn">Reset</button>
+            <div id="sortable" class="modal-content stash"></div>
+        </div>
+        <div id="restart" class="modal">
+            <div class="modal-content">
+                <p>Do you want to reset all pokemon caught and days traveled?</p>
+                <button class="yesRestart">Yes</button>
+                <button class="noRestart">No</button>
+            </div>
+        </div>
+        <div id="sleep" class="modal">
+            <div class="modal-content tired">
+                <p>On to the next day!</p>
+                <div class="sleeping">
+                    <img src="pictures/reset.gif" alt="">
+                </div>
+            </div>
+        </div>
+</body>
+</html>
