@@ -1,17 +1,15 @@
-# Memory Match
+<img align="right" width="150" src="pictures/icon.png">
 
-## Overview
+# Pokemon Stay
 
-> Memory match is a game with 18 cards face down and the player has to try and match all 9 pairs of matching cards by remembering the position of the cards.
-Once the player has match 2 cards they will be displayed face up until all pairs have been matched. Once all pairs have been matched the user will be
-displayed a message that they have won the game. As the user clicks through the cards stats will be kept letting the user know how many attempts and the
-accuracy of their choices.
+##### https://pokestay.jungiang.com
 
-> <a href="https://docs.google.com/presentation/d/1zlSHYatpaPsrq4LuOtyuE-RRIom4vRo-lXovQ0zPV0U/pub?start=false&loop=false&delayms=3000" target="_blank">Design Overview</a>
+This repo contains the Pokemon Stay Application. Designed for desktop and tablet sized screens, the app is a memory match game based on the original 151 pokemon series. Click on cards to unveil random pokemon hidden behind them. When a pair has been matched, it will be added to your collection. Once you have caught all the pokemon on the field or when you reset the day manually, it will be repopulated with new random pokemon. Your collection persists even after exiting the game, so you can keep adding to it whenever you want!
 
-> <a href="https://drive.google.com/open?id=0B3R9g7F9YRS6SHd3Q3lRdWF0RkU" target="_blank">Flow Document</a>
+### Setup Instructions
 
-> ### Versions
-> - Version 1.0 (v1.0) - <a href="https://github.com/Learning-Fuze/memory_match/tree/version1.0">View Details</a>
-> - Version 0.5 (v0.5) - <a href="https://github.com/Learning-Fuze/memory_match/tree/version0.5">View Details</a>
-> - Version 0.1 (v0.1) - <a href="https://github.com/Learning-Fuze/memory_match/tree/version0.1">View Details</a>
+1. Fork this repo
+1. Clone your forked copy of this repo
+   - `git clone https://github.com/[Your Username]/pokemonstay.git`
+1. Change directory into the newly cloned repo
+   - `cd pokemonstay`
