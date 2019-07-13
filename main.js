@@ -82,7 +82,6 @@ function initializeApp(){
     });
     $('.mute').on('click', intro);
     $('.play').on('click', playBackground);
-    $('.card').on('click', card_clicked);
     $('.reset').on('click', resetDay);
     $('.info').on('click', showCollection);
     $('.menu').on('click', playGame);
@@ -158,6 +157,7 @@ function resetDay(){
     var morning = setInterval(function(){
         jigglyFade();
     }, 495);
+    $('.card').off('click', card_clicked);
     gameReset();
     goToBed();
     setTimeout(function(){
@@ -250,6 +250,7 @@ function randomCard(){
         secondCard.attr('src', pokeArray[randomIndex]);
         valueArray.splice(secondCardVal, 1);
     }
+    $('.card').on('click', card_clicked);
 }
 
 function card_clicked(){
@@ -296,7 +297,6 @@ function card_clicked(){
                 localStorage.setItem('games_played', JSON.stringify(games_played));
                 setTimeout(function(){
                     resetDay();
-                    addHandlersAgain();
                 }, 3500);
             }
         }else{
