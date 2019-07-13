@@ -93,7 +93,7 @@ sub {
     left: 20%;
     background-image: url(pictures/sleep.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: 20% 50%;
     background-repeat: no-repeat;
     height: 6vh;
     width: 10vh;
